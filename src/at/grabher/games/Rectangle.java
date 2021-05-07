@@ -1,5 +1,6 @@
 package at.grabher.games;
 
+import net.java.games.input.DirectInputEnvironmentPlugin;
 import org.newdawn.slick.*;
 import org.newdawn.slick.tests.AnimationTest;
 
@@ -16,13 +17,50 @@ public class Rectangle extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.x = 100;
-        this.speed = 50.0f;
+        this.y = 400;
+        this.speed = 5.0f;
 
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
-        this.x += (float) delta/this.speed;
+
+
+
+            if (x < 400 && y >= 400) {
+                this.x += (float) delta / this.speed;
+            }
+
+            if (x > 400 && y > 100) {
+                this.y -= (float) delta / this.speed;
+            }
+
+            if (y <= 100 && x > 100) {
+                this.x -= (float) delta / this.speed;
+            }
+
+            if (x < 100 && y < 400) {
+                this.y += (float) delta / this.speed;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
