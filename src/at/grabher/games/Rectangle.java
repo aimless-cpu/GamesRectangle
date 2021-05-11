@@ -1,22 +1,20 @@
 package at.grabher.games;
 
+import jdk.dynalink.Operation;
 import org.newdawn.slick.Graphics;
 
 public class Rectangle implements Form {
     //instance
     private float x,y;
     private float speed;
-    private enum Direction {RIGHT, LEFT}
+    //public enum Direction {LEFT, RIFHT}
+    private ObjectGames.Direction direction;
 
-    public Rectangle(float x, float y, float speed) {
+    public Rectangle(float x, float y, float speed, ObjectGames.Direction direction) {
         this.x = x;
         this.y = y;
         this.speed = speed;
-    }
-
-    public void setDirection() {
-        System.out.println("1 RIGHT, 2 LEFT");
-
+        this.direction = direction;
     }
 
     @Override
@@ -26,9 +24,14 @@ public class Rectangle implements Form {
 
     @Override
     public void update(int delta) {
-        this.x += (float) delta / this.speed;
+        if (direction.equals(ObjectGames.Direction.LEFT)) {
+            this.x -= (float) delta / this.speed;
+        } else if (direction.equals(ObjectGames.Direction.RIGHT)) {
+            this.x += (float) delta / this.speed;
+        }
         if (this.x > 800) {
             this.x = 0;
         }
     }
+
 }
