@@ -21,6 +21,11 @@ public class ObjectGames extends BasicGame {
 
         for (int i = 0; i<10; i++) {
             Rectangle rectangle = new Rectangle(rand.nextInt(800),rand.nextInt(600), rand.nextInt(50));
+            Circle circle = new Circle(rand.nextInt(800), rand.nextInt(600), 50, rand.nextInt(50));
+            Ellipse ellipse = new Ellipse(rand.nextInt(800), rand.nextInt(600), rand.nextInt(70), rand.nextInt(40), rand.nextInt(50));
+            formList.add(rectangle);
+            formList.add(circle);
+            formList.add(ellipse);
         }
 
     }
@@ -29,13 +34,16 @@ public class ObjectGames extends BasicGame {
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Form form : this.formList) {
             form.update(delta);
-
         }
 
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
+
+        for (Form form : this.formList ) {
+            form.render(graphics);
+        }
 
     }
 

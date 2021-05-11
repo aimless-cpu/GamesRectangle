@@ -6,11 +6,17 @@ public class Rectangle implements Form {
     //instance
     private float x,y;
     private float speed;
+    private enum Direction {RIGHT, LEFT}
 
     public Rectangle(float x, float y, float speed) {
         this.x = x;
         this.y = y;
         this.speed = speed;
+    }
+
+    public void setDirection() {
+        System.out.println("1 RIGHT, 2 LEFT");
+
     }
 
     @Override
@@ -20,10 +26,9 @@ public class Rectangle implements Form {
 
     @Override
     public void update(int delta) {
-        this.y += (float) delta / this.speed;
-        if (this.y > 600) {
-            this.y = 0;
+        this.x += (float) delta / this.speed;
+        if (this.x > 800) {
+            this.x = 0;
         }
-
     }
 }
