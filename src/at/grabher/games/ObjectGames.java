@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class ObjectGames extends BasicGame {
 
-    List<Form> formList;
+    public List<Form> formList;
     enum Direction {LEFT, RIGHT}
     Direction direction;
 
@@ -45,11 +45,15 @@ public class ObjectGames extends BasicGame {
 
         for (int i = 0; i<10; i++) {
             Rectangle rectangle = new Rectangle(rand.nextInt(800),rand.nextInt(600), rand.nextInt(50), direction);
-            Circle circle = new Circle(rand.nextInt(800), rand.nextInt(600), rand.nextInt(50));
             Ellipse ellipse = new Ellipse(rand.nextInt(800), rand.nextInt(600), rand.nextInt(70), rand.nextInt(40), rand.nextInt(50));
             formList.add(rectangle);
-            formList.add(circle);
             formList.add(ellipse);
+
+            Circle circle = new Circle(rand.nextInt(800), rand.nextInt(600), rand.nextInt(50));
+
+            formList.add(circle);
+
+
         }
     }
 
@@ -67,14 +71,13 @@ public class ObjectGames extends BasicGame {
         for (Form form : this.formList ) {
             form.render(graphics);
         }
+    }
 
+    public List<Form> getFormList() {
+        return formList;
     }
 
     public static void main(String[] argv) {
-
-
-
-
 
         try {
             AppGameContainer container = new AppGameContainer(new ObjectGames("Rectangles and more"));
@@ -84,4 +87,6 @@ public class ObjectGames extends BasicGame {
             e.printStackTrace();
         }
     }
+
+
 }
